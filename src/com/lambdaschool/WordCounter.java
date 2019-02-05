@@ -19,13 +19,15 @@ public class WordCounter {
     HashMap<String, Integer> uniqueWordCount = new HashMap<String, Integer>();
 
     for (String word : words) {
-      if (uniqueWordCount.containsKey(word)) {
-        Integer wordCount = uniqueWordCount.get(word);
+      String lcWord = word.toLowerCase();
+
+      if (uniqueWordCount.containsKey(lcWord)) {
+        Integer wordCount = uniqueWordCount.get(lcWord);
         wordCount++;
 
-        uniqueWordCount.put(word, wordCount);
+        uniqueWordCount.put(lcWord, wordCount);
       } else {
-        uniqueWordCount.put(word, 1);
+        uniqueWordCount.put(lcWord, 1);
       }
     }
 
