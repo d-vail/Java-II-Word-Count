@@ -3,6 +3,8 @@ package com.lambdaschool;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+        WordCounter wc = new WordCounter("A A A couple of duplicate duplicate words words");
+
+        System.out.println(wc);
     }
 }
