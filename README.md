@@ -52,13 +52,15 @@ javac ./src/com/lambdaschool/*.java
 To prepare a shippable application (JAR file) use:
 
 ```` bash
-jar cvfe WordCountApp.jar ./src/com/lambdaschool.Main ./src/com/lambdaschool/*.class
+cd ./src
+jar cvfe ../WordCountApp.jar com.lambdaschool.Main com/lambdaschool/*.class
+cd ../
 ````
 
 To execute the application run:
 
 ```` bash
-java -jar ./src/WordCountApp.jar
+java -jar WordCountApp.jar
 ````
 
 #### Import into IntelliJ IDEA

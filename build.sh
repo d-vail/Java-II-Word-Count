@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#!/bin/bash
+
 javac ./src/com/lambdaschool/*.java
-jar cvfe WordCountApp.jar ./src/com/lambdaschool.Main ./src/com/lambdaschool/*.class
-java -jar ./src/WordCountApp.jar
+cd ./src
+jar cvfe ../WordCountApp.jar com.lambdaschool.Main com/lambdaschool/*.class
+cd ../
+java -jar WordCountApp.jar
