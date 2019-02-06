@@ -12,7 +12,7 @@ public class WordCounter {
   }
 
   void getTopWords(Integer num) {
-    System.out.println("\n*** Top " + num + " Words ***");
+    System.out.println("*** Top " + num + " Words ***");
     Integer i = 0;
 
     while(i < num && i < SORTED_WC.size()) {
