@@ -3,56 +3,48 @@ package com.lambdaschool;
 import java.util.*;
 
 public class WordCounter {
-  private HashMap<String, Integer> uniqueWordCount;
-  private ArrayList<HashMap.Entry<String, Integer>> sortedWordCount;
+  private final HashMap<String, Integer> UNIQUE_WC;
+  private final ArrayList<HashMap.Entry<String, Integer>> SORTED_WC;
 
-  public WordCounter(String input) {
-    uniqueWordCount = findUniqueWordCount(processInput(input));
-    sortedWordCount = sortWordCount(uniqueWordCount);
+  WordCounter(String str) {
+    this.UNIQUE_WC = getUniqueWC(processStr(str));
+    this.SORTED_WC = sortWC(UNIQUE_WC);
   }
 
-  private static String[] processInput(String input) {
-    return input.replaceAll("[[\\.\\?\\!\\,\\;\\:\\{\\}\\(\\)\\']]", "").split(" +");
+  private static String[] processStr(String str) {
+    return str.replaceAll("[.?!,;:{}()']", "").split(" +");
   }
 
-  private HashMap<String, Integer> findUniqueWordCount(String[] words) {
-    HashMap<String, Integer> uniqueWordCount = new HashMap<String, Integer>();
+  private static HashMap<String, Integer> getUniqueWC(String[] words) {
+    HashMap<String, Integer> uniqueWC = new HashMap<>();
 
     for (String word : words) {
       String lcWord = word.toLowerCase();
 
-      if (uniqueWordCount.containsKey(lcWord)) {
-        Integer wordCount = uniqueWordCount.get(lcWord);
+      if (uniqueWC.containsKey(lcWord)) {
+        Integer wordCount = uniqueWC.get(lcWord);
         wordCount++;
 
-        uniqueWordCount.put(lcWord, wordCount);
+        uniqueWC.put(lcWord, wordCount);
       } else {
-        uniqueWordCount.put(lcWord, 1);
+        uniqueWC.put(lcWord, 1);
       }
     }
 
-    return uniqueWordCount;
+    return uniqueWC;
   }
 
-  private ArrayList<HashMap.Entry<String, Integer>> sortWordCount(HashMap<String, Integer> wordCount) {
-    ArrayList<HashMap.Entry<String, Integer>> sortedWordCount = new ArrayList<HashMap.Entry<String, Integer>>();
-    sortedWordCount.addAll(wordCount.entrySet());
-
-    Collections.sort(sortedWordCount, new Comparator<HashMap.Entry<String, Integer>>() {
-      @Override
-      public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-        return o2.getValue() - o1.getValue();
-      }
-    });
-
-    return sortedWordCount;
+  private static ArrayList<HashMap.Entry<String, Integer>> sortWC(HashMap<String, Integer> wordCount) {
+    ArrayList<HashMap.Entry<String, Integer>> sortedWC = new ArrayList<>(wordCount.entrySet());
+    sortedWC.sort((o1, o2) -> o2.getValue() - o1.getValue());
+    return sortedWC;
   }
 
   @Override
   public String toString() {
     return "WordCounter{" +
-            "uniqueWordCount=" + uniqueWordCount +
-            ", sortedWordCount=" + sortedWordCount +
+            "UNIQUE_WC=" + UNIQUE_WC +
+            ", SORTED_WC=" + SORTED_WC +
             '}';
   }
 }
