@@ -1,12 +1,14 @@
 package com.lambdaschool;
 
-import java.util.HashMap;
+import java.util.*;
 
 public class WordCounter {
   private HashMap<String, Integer> uniqueWordCount;
+  private ArrayList<HashMap.Entry<String, Integer>> sortedWordCount;
 
   public WordCounter(String input) {
-    this.uniqueWordCount = findUniqueWordCount(processInput(input));
+    uniqueWordCount = findUniqueWordCount(processInput(input));
+    sortedWordCount = sortWordCount(uniqueWordCount);
   }
 
   private static String[] processInput(String input) {
@@ -32,10 +34,25 @@ public class WordCounter {
     return uniqueWordCount;
   }
 
+  private ArrayList<HashMap.Entry<String, Integer>> sortWordCount(HashMap<String, Integer> wordCount) {
+    ArrayList<HashMap.Entry<String, Integer>> sortedWordCount = new ArrayList<HashMap.Entry<String, Integer>>();
+    sortedWordCount.addAll(wordCount.entrySet());
+
+    Collections.sort(sortedWordCount, new Comparator<HashMap.Entry<String, Integer>>() {
+      @Override
+      public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+        return o2.getValue() - o1.getValue();
+      }
+    });
+
+    return sortedWordCount;
+  }
+
   @Override
   public String toString() {
     return "WordCounter{" +
             "uniqueWordCount=" + uniqueWordCount +
+            ", sortedWordCount=" + sortedWordCount +
             '}';
   }
 }
