@@ -3,19 +3,17 @@ package com.lambdaschool;
 import java.util.HashMap;
 
 public class WordCounter {
-  private String[] words;
   private HashMap<String, Integer> uniqueWordCount;
 
-  public WordCounter(String words) {
-    this.words = processInput(words);
-    setUniqueWordCount();
+  public WordCounter(String input) {
+    this.uniqueWordCount = findUniqueWordCount(processInput(input));
   }
 
   private static String[] processInput(String input) {
     return input.replaceAll("[[\\.\\?\\!\\,\\;\\:\\{\\}\\(\\)\\']]", "").split(" +");
   }
 
-  private void setUniqueWordCount() {
+  private HashMap<String, Integer> findUniqueWordCount(String[] words) {
     HashMap<String, Integer> uniqueWordCount = new HashMap<String, Integer>();
 
     for (String word : words) {
@@ -31,7 +29,7 @@ public class WordCounter {
       }
     }
 
-    this.uniqueWordCount = uniqueWordCount;
+    return uniqueWordCount;
   }
 
   @Override
