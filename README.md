@@ -65,7 +65,23 @@ java -jar WordCountApp.jar
 
 #### Import into IntelliJ IDEA
 
-1. Ensure JDK 11 is configured properly in the IDE
-2. Import into IntelliJ (File -> New -> Project from Existing Sources -> Select the
-   project directory -> Move through the wizard until Finish)
-3. Run Main
+Ensure JDK 11 is configured properly in the IDE
+
+##### Option 1 - Import Project From Existing Sources
+
+1. Import into IntelliJ
+    - _From Welcome Screen_: Import Project -> Select the project directory -> 
+      Create Project from Existing Sources -> Move through the wizard until Finished
+    - _From the Editor_: File -> New -> Project from Existing Sources -> Select the
+      project directory -> Create Project from Existing Sources -> Move through the 
+      wizard until Finished
+2. Run Main
+
+##### Option 2 - Import From Version Control
+
+1. Import into IntelliJ
+    - _From Welcome Screen_: Checkout From Version Control -> Git -> Paste in project 
+    url -> Clone
+    - _From the Editor_: File -> New -> Project from Version Control -> Git -> Paste 
+    in project url -> Clone
+2. Run Main
