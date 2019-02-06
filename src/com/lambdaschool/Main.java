@@ -1,11 +1,25 @@
 package com.lambdaschool;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 public class Main {
+    private static String readFile(String path) {
+        String str = "";
+
+        try {
+            str = new String(Files.readAllBytes(Paths.get(path)));
+        } catch (IOException error) {
+            System.out.println("Error reading file: " + error);
+        }
+
+        return str;
+    }
 
     public static void main(String[] args) {
-        WordCounter wc = new WordCounter("(2) No one shall be arbitrarily deprived of his property. Article 18. Everyone has the right to freedom of thought, conscience and religion;");
-        wc.getTopWords(5);
-        wc.getTopWords(10);
+        String path = "./text/example.txt";
+        WordCounter wc = new WordCounter(readFile(path));
         wc.getTopWords(50);
     }
 }
