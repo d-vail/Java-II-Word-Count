@@ -11,6 +11,18 @@ public class WordCounter {
     this.SORTED_WC = sortWC(UNIQUE_WC);
   }
 
+  void getTopWords(Integer num) {
+    System.out.println("\n*** Top " + num + " Words ***");
+    Integer i = 0;
+
+    while(i < num && i < SORTED_WC.size()) {
+      System.out.println((i + 1) +
+              ": Word=" + SORTED_WC.get(i).getKey() +
+              ", Count=" + SORTED_WC.get(i).getValue());
+      i++;
+    }
+  }
+
   private static String[] processStr(String str) {
     return str.replaceAll("[.?!,;:{}()']", "").split(" +");
   }
