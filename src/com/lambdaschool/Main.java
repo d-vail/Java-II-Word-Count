@@ -15,7 +15,8 @@ public class Main {
             "\nLoad a file [file file_path] Ex. file ./text/example.txt" +
             "\nInput a string [input input_string] Ex. input Hello World!" +
             "\nGet top words [top number_of_words] Ex. top 50" +
-            "\nExit [exit]";
+            "\nExit [exit]" +
+            "\n";
 
     private static void print(String output) {
         System.out.println(output);
